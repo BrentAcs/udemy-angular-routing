@@ -19,6 +19,7 @@ const appRoutes: Routes = [
   },
   {
     path: "servers",
+    // this would lock down the entire servers path, we want access to root of servers
     //canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     component: ServersComponent,
