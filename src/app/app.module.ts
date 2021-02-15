@@ -12,24 +12,8 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
-
-// moved to app-routing module, which is typically done w/ more the 2-3 routes
-// const appRoutes: Routes = [
-//   { path: "", component: HomeComponent },
-//   { path: "users", component: UsersComponent, children: [
-//     { path: ":id/:name", component: UserComponent },
-//   ] },
-//   {
-//     path: "servers", component: ServersComponent, children: [
-//       { path: ":id", component: ServerComponent },
-//       { path: ":id/edit", component: EditServerComponent },
-//     ],
-//   },
-//   { path: "not-found", component: PageNotFoundComponent},
-
-//   // NOTE: '**' is wildcard catch-all and should always be last entry in routing list.
-//   { path: "**", redirectTo: '/not-found'}
-// ];
+import { AuthService } from './auth-service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -40,14 +24,14 @@ import { AppRoutingModule } from './app-routing.module';
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
