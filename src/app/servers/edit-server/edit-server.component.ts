@@ -19,6 +19,8 @@ export class EditServerComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    console.log("edit-server.component OnInit");
+
     // only called when page is first loaded( ie, not reactive)
     console.log(this.route.snapshot.queryParams);
     console.log(this.route.snapshot.fragment);

@@ -16,6 +16,11 @@ export class ServersComponent implements OnInit {
     private route: ActivatedRoute) {}
 
   ngOnInit() {
+    console.log('servers.component OnInit')
+    // only called when page is first loaded( ie, not reactive)
+    this.route.snapshot.queryParams;
+    this.route.snapshot.fragment;
+
     this.servers = this.serversService.getServers();
   }
 

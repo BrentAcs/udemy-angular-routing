@@ -22,11 +22,14 @@ export class ServersService {
   }
 
   getServer(id: number) {
+    console.log('servers.servce.getServer(), id: ' + id);
+    // console.log("servers.servce.servers: " + this.servers[0].id);
     const server = this.servers.find(
       (s) => {
         return s.id === id;
       }
     );
+    console.log("servers.servce.getServer() returning: " + server);
     return server;
   }
 
