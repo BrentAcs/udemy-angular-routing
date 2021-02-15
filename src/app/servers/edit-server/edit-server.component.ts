@@ -15,8 +15,8 @@ export class EditServerComponent implements OnInit {
 
   constructor(
     private serversService: ServersService,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute) {
+    }
 
   ngOnInit() {
     console.log("edit-server.component OnInit");
@@ -25,9 +25,8 @@ export class EditServerComponent implements OnInit {
     console.log(this.route.snapshot.queryParams);
     console.log(this.route.snapshot.fragment);
 
-    // this will be used later.
-    // this.route.queryParams.subscribe();
-    // this.route.fragment.subscribe();
+    this.route.queryParams.subscribe();
+    this.route.fragment.subscribe();
 
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;

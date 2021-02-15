@@ -19,19 +19,19 @@ export class ServerComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    console.log("server.component OnInit");
     // only called when page is first loaded( ie, not reactive)
-    const id = this.route.snapshot.queryParams["id"];
+    const id = +this.route.snapshot.params["id"];
+    console.log("id: " + id);
+
     console.log("params: " + this.route.snapshot.queryParams);
-    console.log("id:" + id);
+    console.log("fragment: " + this.route.snapshot.fragment);
     this.route.snapshot.fragment;
 
     this.server = this.serversService.getServer(id);
     this.route.params
     .subscribe(
       (params: Params) => {
-        console.log('subscribe id: ' +params["id"]);
-        this.serversService.getServer(params['id']);
+        this.serversService.getServer(+params['id']);
       }
     );
   }
