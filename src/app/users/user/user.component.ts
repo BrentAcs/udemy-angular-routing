@@ -14,18 +14,17 @@ export class UserComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // only called when page is first loaded( ie, not reactive)
     this.user = {
       id: this.route.snapshot.params["id"],
       name: this.route.snapshot.params["name"],
     };
 
-    this.paramsSubscription = this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.user.id = params['id'];
-          this.user.name = params['name'];
-        }
-      );
+    // called on refresh
+    this.paramsSubscription = this.route.params.subscribe((params: Params) => {
+      this.user.id = params["id"];
+      this.user.name = params["name"];
+    });
   }
 
   ngOnDestroy(){
