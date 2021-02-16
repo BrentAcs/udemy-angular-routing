@@ -46,8 +46,9 @@ const appRoutes: Routes = [
   { path: "**", redirectTo: "/not-found" },
 ];
 @NgModule({
+  // use case: location strategy on a deployed app, may be needed.
+  //imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
