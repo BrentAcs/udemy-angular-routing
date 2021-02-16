@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, Data, Params, Router } from "@angular/router";
 
 import { ServersService } from "../servers.service";
 
@@ -19,17 +19,21 @@ export class ServerComponent implements OnInit {
 
   ngOnInit() {
     // only called when page is first loaded( ie, not reactive)
-    const id = +this.route.snapshot.params["id"];
-    console.log("id: " + id);
+    // const id = +this.route.snapshot.params["id"];
+    // this.route.snapshot.fragment;
 
-    console.log("params: " + this.route.snapshot.queryParams);
-    console.log("fragment: " + this.route.snapshot.fragment);
-    this.route.snapshot.fragment;
+    // this.server = this.serversService.getServer(id);
+    // this.route.params.subscribe((params: Params) => {
+    //   this.server = this.serversService.getServer(+params["id"]);
+    // });
 
-    this.server = this.serversService.getServer(id);
-    this.route.params.subscribe((params: Params) => {
-      this.server = this.serversService.getServer(+params["id"]);
-    });
+    // this is cleaner/leaner than that ^^
+    this.route.data
+      .subscribe(
+        (data: Data) =>{
+          this.server = data['server'];
+        }
+      );
   }
 
   onEdit(){
